@@ -1,66 +1,383 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Esports Trainer Pro Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #0A0A0F;
+      --surface:  #12121A;
+      --accent:   #00D4FF;
+      --accent2:  #FFAA00;
+      --text:     #B0B0C0;
+      --text-dim: rgba(255,255,255,0.45);
+      --border:   rgba(0, 212, 255, 0.15);
+      --glow:     rgba(0, 212, 255, 0.25);
+    }
 
-  <h2>Last Updated</h2>
-  <p>April 23, 2026</p>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <h2>Overview</h2>
-  <p>
-    Esports Trainer Pro Academy respects your privacy. This app is designed to work completely offline and does not collect, store, or transmit any personal data. No account, login, or registration is required to use the app.
-  </p>
+    html { scroll-behavior: smooth; }
 
-  <h2>Information We Collect</h2>
-  <p>
-    We do not collect any personal or sensitive information from users, including name, email address, phone number, location, contacts, device information, or payment details. The app functions without requiring any personal data input from the user.
-  </p>
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-  <h2>Local Data Storage</h2>
-  <p>
-    The app may store certain data locally on your device, such as training progress, preferences, and settings. This data remains stored only on your device and is never uploaded, transmitted, or accessed by us or any external party.
-  </p>
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  <h2>How We Use Data</h2>
-  <p>
-    The locally stored data is used only to improve your experience, save your progress, and provide personalized training content within the app.
-  </p>
+    /* Glow orb */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  <h2>Third-Party Services</h2>
-  <p>
-    This app does not use any third-party analytics, advertising networks, or tracking tools. No external services are integrated that collect or process user data.
-  </p>
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
 
-  <h2>Data Security</h2>
-  <p>
-    Since all data remains stored locally on your device, security depends on your device’s built-in protection. We do not have access to your data at any point.
-  </p>
+    /* ── HEADER ── */
+    header {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+      animation: slideDown 0.5s ease both;
+    }
 
-  <h2>Your Rights</h2>
-  <p>
-    You can clear all stored data at any time through your device settings. Uninstalling the app will remove all stored data.
-  </p>
+    .dev-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
 
-  <h2>Data Sharing</h2>
-  <p>
-    We do not sell, share, or transfer any user data to third parties under any circumstances. All information stays strictly on the user’s device and remains private.
-  </p>
+    .header-title-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
 
-  <h2>Data Deletion</h2>
-  <p>
-    You can delete all stored data at any time by clearing the app data from your device settings or by uninstalling the app. This will permanently remove all locally stored information.
-  </p>
+    .accent-bar {
+      width: 4px;
+      height: 42px;
+      background: var(--accent);
+      border-radius: 2px;
+      box-shadow: 0 0 12px var(--glow);
+      flex-shrink: 0;
+    }
 
-  <h2>Children’s Privacy</h2>
-  <p>
-    This app does not knowingly collect any personal data from any users, including children.
-  </p>
+    h1 {
+      font-size: clamp(26px, 6vw, 38px);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
 
-  <h2>Changes to This Policy</h2>
-  <p>
-    This Privacy Policy may be updated in the future. Continued use of the app means you accept any updates.
-  </p>
+    .app-name {
+      font-size: 14px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      padding-left: 18px;
+    }
 
-  <h2>Contact Us</h2>
-  <p>
-    If you have questions about this privacy policy, contact us at: <strong>naumanabbas424@gmail.com</strong>
-  </p>
+    .last-updated {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 6px 14px;
+      background: rgba(0,212,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .last-updated::before {
+      content: '●';
+      font-size: 8px;
+      animation: blink 1.5s infinite;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.4s ease forwards;
+    }
+
+    .card:hover {
+      border-color: rgba(0,212,255,0.35);
+      box-shadow: 0 0 24px rgba(0,212,255,0.07);
+    }
+
+    .card:nth-child(1)  { animation-delay: 0.05s; }
+    .card:nth-child(2)  { animation-delay: 0.10s; }
+    .card:nth-child(3)  { animation-delay: 0.15s; }
+    .card:nth-child(4)  { animation-delay: 0.20s; }
+    .card:nth-child(5)  { animation-delay: 0.25s; }
+    .card:nth-child(6)  { animation-delay: 0.30s; }
+    .card:nth-child(7)  { animation-delay: 0.35s; }
+    .card:nth-child(8)  { animation-delay: 0.40s; }
+    .card:nth-child(9)  { animation-delay: 0.45s; }
+    .card:nth-child(10) { animation-delay: 0.50s; }
+    .card:nth-child(11) { animation-delay: 0.55s; }
+    .card:nth-child(12) { animation-delay: 0.60s; }
+    .card:nth-child(13) { animation-delay: 0.65s; }
+    .card:nth-child(14) { animation-delay: 0.70s; }
+
+    .card-title {
+      padding: 13px 18px 11px;
+      border-bottom: 1px solid rgba(0,212,255,0.10);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .card-body {
+      padding: 12px 18px 16px;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* highlight special card */
+    .card.highlight .card-title {
+      color: var(--accent2);
+      border-bottom-color: rgba(255,170,0,0.12);
+    }
+
+    .card.highlight {
+      border-color: rgba(255,170,0,0.18);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .footer-dev {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,212,255,0.3);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    a:hover {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.2; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 500px) {
+      header { padding: 32px 0 24px; }
+      .card-title { font-size: 14px; }
+      .card-body  { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="dev-tag">FZ Developers</div>
+    <div class="header-title-row">
+      <div class="accent-bar"></div>
+      <h1>Privacy Policy</h1>
+    </div>
+    <div class="app-name">Esports Trainer Pro Academy</div>
+    <div class="last-updated">Last Updated &nbsp;·&nbsp; April 23, 2026</div>
+  </header>
+
+  <main>
+
+    <div class="card">
+      <div class="card-title">Overview</div>
+      <div class="card-body">
+        FZ Developers, the developer of Esports Trainer Pro Academy, respects your privacy. This app is designed to work completely offline and does not collect, store, or transmit any personal data. No account, login, or registration is required to use the app.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Information We Collect</div>
+      <div class="card-body">
+        We do not collect any personal or sensitive information from users, including name, email address, phone number, location, contacts, device information, or payment details. The app functions without requiring any personal data input from the user.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Local Data Storage</div>
+      <div class="card-body">
+        The app may store certain data locally on your device, such as training progress, preferences, and settings. This data remains stored only on your device and is never uploaded, transmitted, or accessed by us or any external party.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">How We Use Data</div>
+      <div class="card-body">
+        The locally stored data is used only to improve your experience, save your progress, and provide personalized training content within the app.
+      </div>
+    </div>
+
+    <div class="card highlight">
+      <div class="card-title">Drill Timer &amp; Background Service</div>
+      <div class="card-body">
+        This app includes a Drill Timer feature that plays audio alerts and runs a foreground service to keep the timer active while your screen is off or the app is in the background. This requires the FOREGROUND_SERVICE and POST_NOTIFICATIONS permissions. No data is collected or transmitted during this process. The timer runs entirely on your device.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Notifications</div>
+      <div class="card-body">
+        The app may send local notifications to alert you when a drill timer completes. These notifications are generated entirely on your device and do not involve any external servers or data collection.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Third-Party Services</div>
+      <div class="card-body">
+        This app does not use any third-party analytics, advertising networks, or tracking tools. No external services are integrated that collect or process user data.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Data Security</div>
+      <div class="card-body">
+        Since all data remains stored locally on your device, security depends on your device's built-in protection. We do not have access to your data at any point.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your Rights</div>
+      <div class="card-body">
+        You can clear all stored data at any time through your device settings. Uninstalling the app will remove all stored data.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Data Sharing</div>
+      <div class="card-body">
+        We do not sell, share, or transfer any user data to third parties under any circumstances. All information stays strictly on the user's device and remains private.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Data Deletion</div>
+      <div class="card-body">
+        You can delete all stored data at any time by clearing the app data from your device settings or by uninstalling the app. This will permanently remove all locally stored information.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Children's Privacy</div>
+      <div class="card-body">
+        This app does not knowingly collect any personal data from any users, including children.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Changes to This Policy</div>
+      <div class="card-body">
+        This Privacy Policy may be updated in the future. Continued use of the app means you accept any updates.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Contact Us</div>
+      <div class="card-body">
+        If you have questions about this privacy policy, contact FZ Developers at:
+        <br/><br/>
+        <a href="mailto:naumanabbas424@gmail.com">naumanabbas424@gmail.com</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-dev">FZ DEVELOPERS</div>
+    <div class="footer-copy">© 2026 FZ Developers · Esports Trainer Pro Academy · All rights reserved.</div>
+  </footer>
 
 </div>
+</body>
+</html>
